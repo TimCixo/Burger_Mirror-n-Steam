@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 311702088303492122}
   - component: {fileID: 8941834959968504428}
   - component: {fileID: 3892921360277569873}
+  - component: {fileID: 6674359859510286013}
   m_Layer: 0
   m_Name: TPL_Actor
   m_TagString: Untagged
@@ -81,9 +82,23 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
+--- !u!114 &6674359859510286013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4971209331248797743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe17e753cb75acb4c860c81acf566f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IaMovement
+  _moveAction: {fileID: 250956713570506964, guid: 799d8aa06441f8b42b956dc98393937d, type: 3}
+  _moveSpeed: 5
 --- !u!1 &5827636926576073773
 GameObject:
   m_ObjectHideFlags: 0
