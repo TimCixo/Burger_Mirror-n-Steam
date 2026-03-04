@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8941834959968504428}
   - component: {fileID: 3892921360277569873}
   - component: {fileID: 6674359859510286013}
+  - component: {fileID: 7123565037988187082}
   m_Layer: 0
   m_Name: TPL_Actor
   m_TagString: Untagged
@@ -99,6 +100,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IaMovement
   _moveAction: {fileID: 250956713570506964, guid: 799d8aa06441f8b42b956dc98393937d, type: 3}
   _moveSpeed: 5
+  _collisionSkin: 0.02
+--- !u!114 &7123565037988187082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4971209331248797743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9877a790b217ab6429350b3fc803148d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IaRotation
+  _lookAction: {fileID: -4652629648200340992, guid: 799d8aa06441f8b42b956dc98393937d, type: 3}
+  _yawSpeed: 180
+  _pitchPivot: {fileID: 0}
+  _pitchSpeed: 120
+  _minPitch: -80
+  _maxPitch: 80
 --- !u!1 &5827636926576073773
 GameObject:
   m_ObjectHideFlags: 0

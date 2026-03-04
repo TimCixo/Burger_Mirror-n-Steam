@@ -152,6 +152,17 @@
                 },
                 {
                     "name": "",
+                    "id": "feb7549f-3a8f-4095-b9df-047611dab630",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "79e06a4e-2cb2-4b74-b277-22cd761e7579",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",

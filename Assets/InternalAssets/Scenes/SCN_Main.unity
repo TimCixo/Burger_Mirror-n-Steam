@@ -777,6 +777,10 @@ PrefabInstance:
       propertyPath: _moveSpeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2376716403672172806, guid: feaa26d79c3d6df438ea375df6e6adef, type: 3}
+      propertyPath: _pitchPivot
+      value: 
+      objectReference: {fileID: 330585546}
     - target: {fileID: 5076494900527595222, guid: feaa26d79c3d6df438ea375df6e6adef, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
