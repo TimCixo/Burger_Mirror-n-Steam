@@ -25,10 +25,26 @@ public class IaRotation : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
 
-        if (_pitchPivot == null) return;
+        if (!Validate())
+        {
+            enabled = false;
+            return;
+        }
 
         _pitchBaseLocalRotation = _pitchPivot.localRotation;
         _pitch = 0f;
+    }
+
+    private bool Validate()
+    {
+        bool ok = true;
+
+        ok &= Guard.Expect(_lookAction != null, "Look action reference is not assigned.", this);
+        ok &= Guard.Expect(_lookAction.action != null, "Look action is not properly set up.", this);
+        ok &= Guard.Expect(_rigidbody != null, "Rigidbody component is missing.", this);
+        ok &= Guard.Expect(_pitchPivot != null, "Pitch pivot is not assigned.", this);
+
+        return ok;
     }
 
     private void OnEnable()
@@ -39,16 +55,11 @@ public class IaRotation : MonoBehaviour
     private void OnDisable()
     {
         _lookAction?.action?.Disable();
+        _lookInput = Vector2.zero;
     }
 
     private void Update()
     {
-        if (_lookAction == null || _lookAction.action == null)
-        {
-            _lookInput = Vector2.zero;
-            return;
-        }
-
         _lookInput = _lookAction.action.ReadValue<Vector2>();
     }
 
@@ -58,8 +69,6 @@ public class IaRotation : MonoBehaviour
         Quaternion yawRotation = Quaternion.Euler(0f, yawDelta, 0f);
 
         _rigidbody.MoveRotation(_rigidbody.rotation * yawRotation);
-
-        if (_pitchPivot == null) return;
 
         _pitch -= _lookInput.y * _pitchSpeed * Time.fixedDeltaTime;
         _pitch = Mathf.Clamp(_pitch, _minPitch, _maxPitch);
