@@ -141,6 +141,17 @@
                 },
                 {
                     "name": "",
+                    "id": "f411b662-7105-4e6d-9ed7-9615d0deb4ee",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "cfa46fc7-0dd7-43b8-b8f8-3cc75586a692",
                     "path": "<Mouse>/delta",
                     "interactions": "",
