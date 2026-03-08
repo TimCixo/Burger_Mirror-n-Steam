@@ -185,6 +185,17 @@
                 },
                 {
                     "name": "",
+                    "id": "db6aa5e4-adfe-4562-8a17-62fab9c02346",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Hold Object",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "e59f91fc-a118-463b-a569-325e3ab6ea4d",
                     "path": "<Mouse>/scroll/y",
                     "interactions": "",
