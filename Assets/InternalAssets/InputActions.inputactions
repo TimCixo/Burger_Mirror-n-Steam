@@ -199,11 +199,44 @@
                     "id": "e59f91fc-a118-463b-a569-325e3ab6ea4d",
                     "path": "<Mouse>/scroll/y",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "Scale(factor=8)",
                     "groups": "",
                     "action": "Zoom Object",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "6f18aeef-0e58-4862-b721-9e9348d2c02e",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Zoom Object",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "9d5c85d4-989c-4c71-84d1-50763b097205",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Zoom Object",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "722c468a-a983-4a60-913e-d56f3545e615",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Zoom Object",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
