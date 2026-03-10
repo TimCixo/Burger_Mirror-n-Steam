@@ -52,7 +52,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Rotate Object",
+                    "name": "Throw Object",
                     "type": "Button",
                     "id": "2f3c344f-45f6-4d5e-b84c-897e7f904090",
                     "expectedControlType": "",
@@ -186,7 +186,7 @@
                 {
                     "name": "",
                     "id": "db6aa5e4-adfe-4562-8a17-62fab9c02346",
-                    "path": "<Gamepad>/leftShoulder",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -245,7 +245,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Rotate Object",
+                    "action": "Throw Object",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3b451f79-00c2-4091-8615-0444db21a734",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Throw Object",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

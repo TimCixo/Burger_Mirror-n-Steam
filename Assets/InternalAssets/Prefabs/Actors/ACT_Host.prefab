@@ -197,6 +197,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: eeed8240e305b654f9b3228b0c86dd3e, type: 2}
+    - target: {fileID: 4643047612585929842, guid: 3be8c894d4c3c9741aa97f2312eb4a43, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 4806785400733553042}
     - target: {fileID: 4971209331248797743, guid: 3be8c894d4c3c9741aa97f2312eb4a43, type: 3}
       propertyPath: m_Name
       value: ACT_Host

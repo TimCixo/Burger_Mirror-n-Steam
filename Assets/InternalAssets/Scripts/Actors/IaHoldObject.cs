@@ -13,6 +13,7 @@ public class IaHoldObject : MonoBehaviour
     [SerializeField] private LayerMask _holdableMask = ~0;
 
     private HoldableObject _heldObject;
+    public HoldableObject HeldObject => _heldObject;
 
     private void Awake()
     {
@@ -88,22 +89,23 @@ public class IaHoldObject : MonoBehaviour
 
     private void OnHoldCanceled(InputAction.CallbackContext context)
     {
-        Drop();
+        TryDrop();
     }
 
     public void PickUp(HoldableObject holdable)
     {
-        if (_heldObject != null) Drop();
+        if (_heldObject != null) TryDrop();
 
         _heldObject = holdable;
         _heldObject.OnPickUp(_holdPoint.transform);
     }
 
-    public void Drop()
+    public bool TryDrop()
     {
-        if (_heldObject == null) return;
+        if (_heldObject == null) return false;
 
         _heldObject.OnDrop();
         _heldObject = null;
+        return true;
     }
 }
