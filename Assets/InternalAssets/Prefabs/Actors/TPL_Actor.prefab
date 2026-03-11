@@ -195,6 +195,7 @@ GameObject:
   - component: {fileID: 3773920547913055432}
   - component: {fileID: 3158011488662337149}
   - component: {fileID: 4643047612585929842}
+  - component: {fileID: 6105825013144077569}
   m_Layer: 0
   m_Name: TPL_Actor
   m_TagString: Untagged
@@ -268,7 +269,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 2
 --- !u!114 &6674359859510286013
 MonoBehaviour:
@@ -354,7 +355,7 @@ MonoBehaviour:
   _zoomAction: {fileID: 3330455266962570355, guid: 799d8aa06441f8b42b956dc98393937d, type: 3}
   _holdPoint: {fileID: 6202425657596242001}
   _zoomSpeed: 2
-  _minDistance: 0.75
+  _minDistance: 1
   _maxDistance: 3
 --- !u!114 &4643047612585929842
 MonoBehaviour:
@@ -373,6 +374,18 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _throwForce: 8
   _forceMode: 1
+--- !u!114 &6105825013144077569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4971209331248797743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d51c64ed25a76d4fb41611c347c4398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollisionCache
 --- !u!1 &5827636926576073773
 GameObject:
   m_ObjectHideFlags: 0

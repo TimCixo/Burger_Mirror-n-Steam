@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(CollisionCache))]
 public class IaHoldObject : MonoBehaviour
 {
     [Header("Input")]
@@ -13,10 +14,14 @@ public class IaHoldObject : MonoBehaviour
     [SerializeField] private LayerMask _holdableMask = ~0;
 
     private HoldableObject _heldObject;
+    private CollisionCache _playerCollisionCache;
+    private CollisionCache _heldCollisionCache;
     public HoldableObject HeldObject => _heldObject;
 
     private void Awake()
     {
+        _playerCollisionCache = GetComponentInParent<CollisionCache>();
+
         if (!Validate())
         {
             enabled = false;
@@ -32,6 +37,7 @@ public class IaHoldObject : MonoBehaviour
         ok &= Guard.Expect(_holdAction.action != null, "Hold action is not properly set up.", this);
         ok &= Guard.Expect(_camera != null, "Camera is not assigned and Camera.main was not found.", this);
         ok &= Guard.Expect(_holdPoint != null, "Hold point transform is not assigned.", this);
+        ok &= Guard.Expect(_playerCollisionCache != null, "Player collision cache is not assigned.", this);
         ok &= Guard.Expect(_rayDistance > 0f, "Ray distance must be greater than 0.", this);
         ok &= Guard.Expect(_holdableMask.value != 0, "Holdable mask is empty. Assign at least one layer.", this);
 
@@ -96,6 +102,10 @@ public class IaHoldObject : MonoBehaviour
     {
         if (_heldObject != null) TryDrop();
 
+        _heldCollisionCache = holdable.GetComponentInParent<CollisionCache>();
+
+        CollisionUtility.SetIgnore(_playerCollisionCache.Colliders, _heldCollisionCache?.Colliders, true);
+
         _heldObject = holdable;
         _heldObject.OnPickUp(_holdPoint.transform);
     }
@@ -104,8 +114,11 @@ public class IaHoldObject : MonoBehaviour
     {
         if (_heldObject == null) return false;
 
+        CollisionUtility.SetIgnore(_playerCollisionCache.Colliders, _heldCollisionCache?.Colliders, false);
+
         _heldObject.OnDrop();
         _heldObject = null;
+        _heldCollisionCache = null;
         return true;
     }
 }
