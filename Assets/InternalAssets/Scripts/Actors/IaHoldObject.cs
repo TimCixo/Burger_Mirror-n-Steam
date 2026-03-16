@@ -83,7 +83,7 @@ public class IaHoldObject : MonoBehaviour
 
         foreach (RaycastHit hit in hits)
         {
-            HoldableObject foundHoldable = hit.collider.GetComponentInParent<HoldableObject>();
+            HoldableObject foundHoldable = FindEnabledHoldable(hit.collider.transform);
             if (foundHoldable == null) continue;
 
             holdable = foundHoldable;
@@ -91,6 +91,22 @@ public class IaHoldObject : MonoBehaviour
         }
 
         return false;
+    }
+
+    private HoldableObject FindEnabledHoldable(Transform current)
+    {
+        while (current != null)
+        {
+            HoldableObject holdable = current.GetComponent<HoldableObject>();
+            if (holdable != null && holdable.enabled)
+            {
+                return holdable;
+            }
+
+            current = current.parent;
+        }
+
+        return null;
     }
 
     private void OnHoldCanceled(InputAction.CallbackContext context)
