@@ -1,14 +1,66 @@
-# Burger_Mirror-N-Steam
+<h1 align="center"> 🍔 Burger_Mirror-N-Steam 🍔 </h1>
 
-Unity project for experiments with multiplayer/networking systems.
+<!-- BADGES -->
+</br>
+<p align="center">
+  <img src="https://img.shields.io/github/repo-size/TimCixo/Burger_Mirror-N-Steam">
+  <img src="https://img.shields.io/badge/unity-6000.2.10f1-blue">
+</p>
 
-## Stack
+Unity-проєкт із прототипом складання бургера у 3D-сцені. Поточний фокус репозиторію: базове керування персонажем, взаємодія з предметами, стек інгредієнтів і підготовка сцени для подальшої мережевої інтеграції.
+
+- [Стек](#стек)
+- [Поточний стан](#поточний-стан)
+- [Core Gameplay](#core-gameplay)
+- [TODO](#todo)
+- [Документація](#документація)
+
+
+## Стек
 
 - Unity `6000.2.10f1`
-- URP
+- Universal Render Pipeline
 - Input System
+- Rigidbody-based physics
 
-## Notes
+## Поточний стан
 
-- Agent-specific local files are ignored via `.gitignore`.
-- Repository documentation entry point: `README.md`.
+У проєкті вже реалізовано:
+
+- рух, поворот і стрибок персонажа
+- підбір предметів через raycast із центру камери
+- зміну дистанції утримання предмета
+- кидок утримуваного об'єкта
+- складання інгредієнтів у стек на тарілці або в точці зборки
+- базову сцену з підлогою, стінами, столом, плитою та pickup station
+
+## Core Gameplay
+
+Поточний ігровий цикл виглядає так:
+
+1. Гравець переміщується сценою та взаємодіє з предметами.
+2. Інгредієнти або тарілка підбираються в руку.
+3. Предмет можна наблизити або віддалити, щоб точніше позиціонувати.
+4. Інгредієнти складаються один на один через систему stack points.
+5. За потреби предмет можна кинути назад у сцену.
+
+Детальніше:
+
+- геймплей: [Docs/Gameplay.md](./Docs/Gameplay.md)
+- ресурси та префаби: [Docs/Assets.md](./Docs/Assets.md)
+- архітектура: [Docs/Architecture.md](./Docs/Architecture.md)
+
+## TODO
+
+- [ ] додати реальні мережеві системи Mirror / Steamworks до gameplay loop
+- [ ] описати сценарій запуску й тестування мультиплеєра
+- [ ] додати правила для сцен, prefab variants і runtime bootstrap
+- [ ] розширити burger assembly перевіркою рецепта та стану замовлення
+
+## Документація
+
+- огляд архітектури: [Docs/Architecture.md](./Docs/Architecture.md)
+- опис геймплею: [Docs/Gameplay.md](./Docs/Gameplay.md)
+- каталог ресурсів: [Docs/Assets.md](./Docs/Assets.md)
+- стиль коду: [Docs/CodeStyle.md](./Docs/CodeStyle.md)
+- правила найменування: [Docs/NamingConvention.md](./Docs/NamingConvention.md)
