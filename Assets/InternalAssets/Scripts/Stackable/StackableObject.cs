@@ -39,6 +39,7 @@ public class StackableObject : MonoBehaviour
 
     public void AttachTo(Transform parent, Transform stackPoint)
     {
+        _holdableObject.EndHold();
         transform.SetParent(parent);
         transform.rotation = stackPoint.rotation;
         transform.position += stackPoint.position - _bottomPoint.position;

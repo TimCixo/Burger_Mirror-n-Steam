@@ -30,7 +30,7 @@
 
 ### Holdable
 
-- `HoldableObject` переводить фізичний об'єкт між станами "у руці" і "у світі"
+- `HoldableObject` керує physics-follow режимом утримання, не переводячи предмет у жорсткий parent-attach
 - `CollisionCache` кешує colliders для групового ігнорування колізій
 - `CollisionUtility` централізує `Physics.IgnoreCollision`
 

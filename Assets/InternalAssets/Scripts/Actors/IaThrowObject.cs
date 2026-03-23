@@ -65,6 +65,8 @@ public class IaThrowObject : MonoBehaviour
 
         if (holdableRigidbody == null) return false;
 
+        heldObject.ClearAngularVelocity();
+
         Vector3 throwDirection = _camera.transform.forward.normalized;
         holdableRigidbody.AddForce(throwDirection * _throwForce, _forceMode);
 

@@ -60,6 +60,11 @@ public class IaHoldObject : MonoBehaviour
 
     private void Update()
     {
+        if (_heldObject != null && (!_heldObject.enabled || !_heldObject.IsHeld))
+        {
+            ReleaseHeldObjectReference();
+        }
+
         Debug.DrawRay(_camera.transform.position, _camera.transform.forward * _rayDistance, Color.red);
     }
 
@@ -98,7 +103,7 @@ public class IaHoldObject : MonoBehaviour
         while (current != null)
         {
             HoldableObject holdable = current.GetComponent<HoldableObject>();
-            if (holdable != null && holdable.enabled)
+            if (holdable != null && holdable.enabled && !holdable.IsHeld)
             {
                 return holdable;
             }
@@ -118,23 +123,29 @@ public class IaHoldObject : MonoBehaviour
     {
         if (_heldObject != null) TryDrop();
 
+        if (holdable == null || !holdable.enabled || holdable.IsHeld) return;
+
         _heldCollisionCache = holdable.GetComponentInParent<CollisionCache>();
 
         CollisionUtility.SetIgnore(_playerCollisionCache.Colliders, _heldCollisionCache?.Colliders, true);
 
         _heldObject = holdable;
-        _heldObject.OnPickUp(_holdPoint.transform);
+        _heldObject.BeginHold(_holdPoint);
     }
 
     public bool TryDrop()
     {
         if (_heldObject == null) return false;
 
-        CollisionUtility.SetIgnore(_playerCollisionCache.Colliders, _heldCollisionCache?.Colliders, false);
+        _heldObject.EndHold();
+        ReleaseHeldObjectReference();
+        return true;
+    }
 
-        _heldObject.OnDrop();
+    private void ReleaseHeldObjectReference()
+    {
+        CollisionUtility.SetIgnore(_playerCollisionCache.Colliders, _heldCollisionCache?.Colliders, false);
         _heldObject = null;
         _heldCollisionCache = null;
-        return true;
     }
 }
