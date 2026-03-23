@@ -9,7 +9,6 @@ public class IaMovement : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] private float _moveSpeed = 5f;
-    [SerializeField] private float _collisionSkin = 0.02f;
 
     private Rigidbody _rigidbody;
     private Vector2 _moveInput;
@@ -55,27 +54,19 @@ public class IaMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 direction = new Vector3(_moveInput.x, 0f, _moveInput.y);
-        Vector3 delta;
-        float distance;
-        float safeDistance;
+        Vector3 velocity = _rigidbody.linearVelocity;
 
         direction = transform.TransformDirection(direction);
         direction.y = 0f;
 
-        if (direction.sqrMagnitude > 0f)
+        if (direction.sqrMagnitude > 1f)
         {
             direction.Normalize();
         }
 
-        delta = direction * _moveSpeed * Time.fixedDeltaTime;
-        distance = delta.magnitude;
+        velocity.x = direction.x * _moveSpeed;
+        velocity.z = direction.z * _moveSpeed;
 
-        if (distance > 0f && _rigidbody.SweepTest(direction, out RaycastHit hit, distance + _collisionSkin, QueryTriggerInteraction.Ignore))
-        {
-            safeDistance = Mathf.Max(0f, hit.distance - _collisionSkin);
-            delta = direction * safeDistance;
-        }
-
-        _rigidbody.MovePosition(_rigidbody.position + delta);
+        _rigidbody.linearVelocity = velocity;
     }
 }
