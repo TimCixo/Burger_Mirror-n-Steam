@@ -59,6 +59,7 @@
 ## Технічні ресурси
 
 - `Assets/InternalAssets/InputActions.inputactions` - карта керування гравця
+- `Assets/InternalAssets/Physics Materials/PM_ActorSlide.physicMaterial` - physics material для capsule collider персонажа
 - `Assets/Settings/*` - URP renderer assets і pipeline settings
 
 ## Примітка

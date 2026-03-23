@@ -9,6 +9,7 @@
 - `Assets/InternalAssets/Scenes` - сцени
 - `Assets/InternalAssets/Prefabs` - префаби акторів, середовища, предметів і пропсів
 - `Assets/InternalAssets/Materials` - матеріали для візуального розділення сутностей
+- `Assets/InternalAssets/Physics Materials` - physics materials для collider-налаштувань runtime-фізики
 - `Assets/InternalAssets/Scripts/Actors` - поведінка гравця
 - `Assets/InternalAssets/Scripts/Holdable` - системи утримання предметів і колізій
 - `Assets/InternalAssets/Scripts/Stackable` - стекування інгредієнтів і дані бургера

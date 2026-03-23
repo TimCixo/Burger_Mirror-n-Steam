@@ -17,7 +17,7 @@
 
 ### Рух персонажа
 
-- `IaMovement` рухає персонажа через `Rigidbody.MovePosition`
+- `IaMovement` задає горизонтальний рух персонажа через `Rigidbody.linearVelocity`
 - `IaRotation` відповідає за yaw тіла та pitch камери
 - `IaJump` виконує стрибок лише при наявності контакту з землею
 
