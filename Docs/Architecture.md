@@ -10,10 +10,12 @@
 - `Assets/InternalAssets/Prefabs` - префаби акторів, середовища, предметів і пропсів
 - `Assets/InternalAssets/Materials` - матеріали для візуального розділення сутностей
 - `Assets/InternalAssets/Physics Materials` - physics materials для collider-налаштувань runtime-фізики
+- `Assets/InternalAssets/Prefabs/UI` - prefab-и HUD та інших UI-елементів сцени
 - `Assets/InternalAssets/Scripts/Actors` - поведінка гравця
 - `Assets/InternalAssets/Scripts/Holdable` - системи утримання предметів і колізій
 - `Assets/InternalAssets/Scripts/Stackable` - стекування інгредієнтів і дані бургера
 - `Assets/InternalAssets/Scripts/Utilities` - дрібні допоміжні утиліти
+- `Assets/TextMesh Pro` - імпортовані runtime та editor resources для UI і тексту
 
 ## Ключові модулі
 
@@ -44,4 +46,4 @@
 
 - мережевий шар ще не введений у кодову базу
 - runtime bootstrap і scene flow поки прості та зосереджені на одній сцені
-- UI та game state management ще не винесені в окремі модулі
+- UI поки обмежений одним HUD prefab у сцені, а game state management ще не винесений в окремі модулі

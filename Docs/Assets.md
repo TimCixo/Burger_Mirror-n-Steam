@@ -16,6 +16,10 @@
 - `ENV_Floor` - модуль підлоги
 - `ENV_Wall` - модуль стіни
 
+## UI префаби
+
+- `UI_GameplayHUD` - базовий screen-space HUD із центральним crosshair
+
 ## Holdable та stackable об'єкти
 
 - `HBLE_Plate` - тарілка для зборки
@@ -59,8 +63,10 @@
 ## Технічні ресурси
 
 - `Assets/InternalAssets/InputActions.inputactions` - карта керування гравця
+- `Assets/InternalAssets/Sprites/aim.png` - sprite для центрального crosshair на HUD
 - `Assets/InternalAssets/Physics Materials/PM_ActorSlide.physicMaterial` - physics material для capsule collider персонажа
 - `Assets/Settings/*` - URP renderer assets і pipeline settings
+- `Assets/TextMesh Pro/*` - імпортовані ресурси `TextMesh Pro Essentials`, доступні для UI та текстових елементів
 
 ## Примітка
 
