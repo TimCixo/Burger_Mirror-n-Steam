@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -3049964622137138568}
   - component: {fileID: -1528189878628669887}
   - component: {fileID: -5025203219281132188}
+  - component: {fileID: 5741756183348906672}
   m_Layer: 6
   m_Name: TPL_Holdable
   m_TagString: Untagged
@@ -113,6 +114,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d51c64ed25a76d4fb41611c347c4398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionCache
+--- !u!114 &5741756183348906672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3829788406683071681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0d7452ad9c1b144e8348f4ae8740506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HoldableStateController
+  _commonState:
+    _isKinematic: 0
+    _useGravity: 1
+    _interpolation: 1
+    _collisionDetectionMode: 2
+  _heldState:
+    _isKinematic: 0
+    _useGravity: 0
+    _interpolation: 1
+    _collisionDetectionMode: 2
+  _stackedState:
+    _isKinematic: 1
+    _useGravity: 0
+    _interpolation: 0
+    _collisionDetectionMode: 0
 --- !u!1 &7591415693580070982
 GameObject:
   m_ObjectHideFlags: 0

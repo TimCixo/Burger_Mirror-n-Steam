@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(HoldableStateController))]
 /// <summary>
 /// Controls the runtime behaviour of a holdable rigidbody while it is carried by an actor.
 /// </summary>
@@ -20,6 +21,7 @@ public class HoldableObject : MonoBehaviour
     [SerializeField] private float _snapDistance = 4f;
 
     private Rigidbody _rigidbody;
+    private HoldableStateController _stateController;
     private Transform _holdTarget;
     private bool _isHeld;
 
@@ -34,6 +36,7 @@ public class HoldableObject : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _stateController = GetComponent<HoldableStateController>();
 
         if (!Validate())
         {
@@ -70,6 +73,7 @@ public class HoldableObject : MonoBehaviour
         bool ok = true;
 
         ok &= Guard.Expect(_rigidbody != null, "Rigidbody component is missing.", this);
+        ok &= Guard.Expect(_stateController != null, "HoldableStateController component is missing.", this);
         ok &= Guard.Expect(_followStrength > 0f, "Follow strength must be greater than 0.", this);
         ok &= Guard.Expect(_followCurve != null, "Follow curve is not assigned.", this);
         ok &= Guard.Expect(_rotationStrength > 0f, "Rotation strength must be greater than 0.", this);
@@ -85,9 +89,8 @@ public class HoldableObject : MonoBehaviour
     public void BeginHold(Transform target)
     {
         _holdTarget = target;
-        _rigidbody.useGravity = false;
-
         _isHeld = true;
+        _stateController.ApplyState(HoldableState.Held);
     }
 
     /// <summary>
@@ -99,9 +102,7 @@ public class HoldableObject : MonoBehaviour
 
         _isHeld = false;
         _holdTarget = null;
-        _rigidbody.useGravity = true;
-        _rigidbody.linearVelocity = Vector3.zero;
-        _rigidbody.angularVelocity = Vector3.zero;
+        _stateController.ApplyState(HoldableState.Common);
     }
 
     /// <summary>

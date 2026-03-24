@@ -52,6 +52,7 @@ public class StackHolder : MonoBehaviour
         StackableObject stackableObject = other.GetComponentInParent<StackableObject>();
 
         if (stackableObject == null) return;
+        if (!stackableObject.CanAttachToStack) return;
         if (stackableObject.transform.IsChildOf(transform)) return;
 
         stackableObject.AttachTo(transform, _stackPoint.transform);
