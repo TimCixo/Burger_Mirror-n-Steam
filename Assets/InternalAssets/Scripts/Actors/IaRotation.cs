@@ -71,6 +71,7 @@ public class IaRotation : MonoBehaviour
     private void OnEnable()
     {
         _lookAction?.action?.Enable();
+        LockCursor();
     }
 
     /// <summary>
@@ -80,6 +81,19 @@ public class IaRotation : MonoBehaviour
     {
         _lookAction?.action?.Disable();
         _lookInput = Vector2.zero;
+        UnlockCursor();
+    }
+
+    /// <summary>
+    /// Restores the locked gameplay cursor when the application regains focus.
+    /// </summary>
+    /// <param name="hasFocus"><see langword="true"/> when the application is focused.</param>
+    private void OnApplicationFocus(bool hasFocus)
+    {
+        if (!enabled) return;
+        if (!hasFocus) return;
+
+        LockCursor();
     }
 
     /// <summary>
@@ -103,5 +117,23 @@ public class IaRotation : MonoBehaviour
         _pitch -= _lookInput.y * _pitchSpeed * Time.fixedDeltaTime;
         _pitch = Mathf.Clamp(_pitch, _minPitch, _maxPitch);
         _pitchPivot.localRotation = _pitchBaseLocalRotation * Quaternion.Euler(_pitch, 0f, 0f);
+    }
+
+    /// <summary>
+    /// Hides the cursor and locks it to the screen center for FPS look input.
+    /// </summary>
+    private void LockCursor()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    /// <summary>
+    /// Restores the cursor when the rotation component is not active.
+    /// </summary>
+    private void UnlockCursor()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 }
