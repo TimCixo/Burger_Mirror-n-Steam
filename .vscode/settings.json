@@ -67,5 +67,9 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "Test_Mirror-N-Steam.slnx"
+    "dotnet.defaultSolution": "Test_Mirror-N-Steam.slnx",
+    "editor.tokenColorCustomizations": {
+        "comments": "",
+        "textMateRules": []
+    }
 }
