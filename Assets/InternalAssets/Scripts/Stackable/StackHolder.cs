@@ -1,6 +1,9 @@
 using UnityEngine;
 
 [RequireComponent(typeof(BurgerData))]
+/// <summary>
+/// Accepts stackable objects through a trigger zone and builds a burger stack from them.
+/// </summary>
 public class StackHolder : MonoBehaviour
 {
     [SerializeField] private GameObject _stackPoint;
@@ -8,6 +11,9 @@ public class StackHolder : MonoBehaviour
     private BurgerData _burgerData;
     private Collider _triggerCollider;
 
+    /// <summary>
+    /// Caches required references and disables the behaviour when setup is invalid.
+    /// </summary>
     private void Awake()
     {
         _burgerData = GetComponent<BurgerData>();
@@ -20,6 +26,10 @@ public class StackHolder : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Validates the stack holder setup and trigger configuration.
+    /// </summary>
+    /// <returns><see langword="true"/> when the holder can accept stackable objects.</returns>
     private bool Validate()
     {
         bool ok = true;
@@ -32,6 +42,10 @@ public class StackHolder : MonoBehaviour
         return ok;
     }
 
+    /// <summary>
+    /// Attaches incoming stackable objects to the current stack and advances the stack point.
+    /// </summary>
+    /// <param name="other">Collider that entered the trigger.</param>
     private void OnTriggerEnter(Collider other)
     {
         StackableObject stackableObject = other.GetComponentInParent<StackableObject>();
@@ -44,6 +58,10 @@ public class StackHolder : MonoBehaviour
         stackableObject.AddTo(_burgerData);
     }
 
+    /// <summary>
+    /// Moves the trigger stack point to the provided world-space position.
+    /// </summary>
+    /// <param name="position">Next position for the stack point.</param>
     private void MoveStackPoint(Vector3 position)
     {
         _stackPoint.transform.position = position;

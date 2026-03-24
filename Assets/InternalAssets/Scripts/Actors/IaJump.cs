@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
+/// <summary>
+/// Queues and applies jump impulses while the actor has valid ground trigger contacts.
+/// </summary>
 public class IaJump : MonoBehaviour
 {
     [Header("Input")]
@@ -17,6 +20,9 @@ public class IaJump : MonoBehaviour
     private bool _jumpQueued;
     private int _groundContacts;
 
+    /// <summary>
+    /// Caches required references and disables the behaviour when setup is invalid.
+    /// </summary>
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -28,6 +34,10 @@ public class IaJump : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Validates the input action, rigidbody and ground mask dependencies.
+    /// </summary>
+    /// <returns><see langword="true"/> when the jump component is configured correctly.</returns>
     private bool Validate()
     {
         bool ok = true;
@@ -40,12 +50,18 @@ public class IaJump : MonoBehaviour
         return ok;
     }
 
+    /// <summary>
+    /// Enables the jump action and subscribes to performed events.
+    /// </summary>
     private void OnEnable()
     {
         _jumpAction?.action?.Enable();
         _jumpAction.action.performed += OnJumpPerformed;
     }
 
+    /// <summary>
+    /// Unsubscribes from input events and clears cached jump state.
+    /// </summary>
     private void OnDisable()
     {
         _jumpAction.action.performed -= OnJumpPerformed;
@@ -54,6 +70,9 @@ public class IaJump : MonoBehaviour
         _groundContacts = 0;
     }
 
+    /// <summary>
+    /// Applies the queued jump if the actor is grounded during the current physics step.
+    /// </summary>
     private void FixedUpdate()
     {
         if (!_jumpQueued || _groundContacts <= 0)
@@ -70,11 +89,19 @@ public class IaJump : MonoBehaviour
         _jumpQueued = false;
     }
 
+    /// <summary>
+    /// Queues a jump for the next physics step.
+    /// </summary>
+    /// <param name="_">Unused jump callback context.</param>
     private void OnJumpPerformed(InputAction.CallbackContext _)
     {
         _jumpQueued = true;
     }
 
+    /// <summary>
+    /// Counts valid ground trigger contacts when the actor enters a ground collider.
+    /// </summary>
+    /// <param name="other">Collider entered by the ground-check trigger.</param>
     private void OnTriggerEnter(Collider other)
     {
         if (other.isTrigger || !IsInGroundMask(other.gameObject.layer))
@@ -85,6 +112,10 @@ public class IaJump : MonoBehaviour
         _groundContacts++;
     }
 
+    /// <summary>
+    /// Removes valid ground trigger contacts when the actor leaves a ground collider.
+    /// </summary>
+    /// <param name="other">Collider exited by the ground-check trigger.</param>
     private void OnTriggerExit(Collider other)
     {
         if (other.isTrigger || !IsInGroundMask(other.gameObject.layer))
@@ -95,6 +126,11 @@ public class IaJump : MonoBehaviour
         _groundContacts = Mathf.Max(0, _groundContacts - 1);
     }
 
+    /// <summary>
+    /// Determines whether a layer is included in the configured ground mask.
+    /// </summary>
+    /// <param name="layer">Layer index to test.</param>
+    /// <returns><see langword="true"/> when the layer belongs to the ground mask.</returns>
     private bool IsInGroundMask(int layer)
     {
         int layerBit = 1 << layer;

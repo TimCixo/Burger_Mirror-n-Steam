@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
+/// <summary>
+/// Rotates the actor body on yaw and a separate pivot on pitch using look input.
+/// </summary>
 public class IaRotation : MonoBehaviour
 {
     [Header("Input")]
@@ -21,6 +24,9 @@ public class IaRotation : MonoBehaviour
     private float _pitch;
     private Quaternion _pitchBaseLocalRotation;
 
+    /// <summary>
+    /// Caches required references and initializes the pitch baseline.
+    /// </summary>
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -35,6 +41,10 @@ public class IaRotation : MonoBehaviour
         _pitch = 0f;
     }
 
+    /// <summary>
+    /// Validates the input action, rigidbody and pitch pivot dependencies.
+    /// </summary>
+    /// <returns><see langword="true"/> when the rotation component is configured correctly.</returns>
     private bool Validate()
     {
         bool ok = true;
@@ -47,22 +57,34 @@ public class IaRotation : MonoBehaviour
         return ok;
     }
 
+    /// <summary>
+    /// Enables the look input action when the component becomes active.
+    /// </summary>
     private void OnEnable()
     {
         _lookAction?.action?.Enable();
     }
 
+    /// <summary>
+    /// Disables the look input action and clears the cached look input.
+    /// </summary>
     private void OnDisable()
     {
         _lookAction?.action?.Disable();
         _lookInput = Vector2.zero;
     }
 
+    /// <summary>
+    /// Reads the latest look input vector from the input action.
+    /// </summary>
     private void Update()
     {
         _lookInput = _lookAction.action.ReadValue<Vector2>();
     }
 
+    /// <summary>
+    /// Applies yaw to the actor rigidbody and pitch to the configured pivot.
+    /// </summary>
     private void FixedUpdate()
     {
         float yawDelta = _lookInput.x * _yawSpeed * Time.fixedDeltaTime;

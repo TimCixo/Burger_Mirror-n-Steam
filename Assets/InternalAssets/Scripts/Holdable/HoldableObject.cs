@@ -1,6 +1,9 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
+/// <summary>
+/// Controls the runtime behaviour of a holdable rigidbody while it is carried by an actor.
+/// </summary>
 public class HoldableObject : MonoBehaviour
 {
     [Header("Hold Follow")]
@@ -13,8 +16,14 @@ public class HoldableObject : MonoBehaviour
     private Transform _holdTarget;
     private bool _isHeld;
 
+    /// <summary>
+    /// Gets a value indicating whether the object is currently held.
+    /// </summary>
     public bool IsHeld => _isHeld;
 
+    /// <summary>
+    /// Caches required references and disables the behaviour when setup is invalid.
+    /// </summary>
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -26,6 +35,9 @@ public class HoldableObject : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Updates the held object's position and rotation in the physics loop.
+    /// </summary>
     private void FixedUpdate()
     {
         if (!_isHeld || _holdTarget == null) return;
@@ -34,11 +46,18 @@ public class HoldableObject : MonoBehaviour
         UpdateHoldRotation();
     }
 
+    /// <summary>
+    /// Ensures hold state is cleared when the component is disabled.
+    /// </summary>
     private void OnDisable()
     {
         EndHold();
     }
 
+    /// <summary>
+    /// Validates required references and serialized hold settings.
+    /// </summary>
+    /// <returns><see langword="true"/> when the object can be used as a holdable item.</returns>
     public bool Validate()
     {
         bool ok = true;
@@ -52,6 +71,10 @@ public class HoldableObject : MonoBehaviour
         return ok;
     }
 
+    /// <summary>
+    /// Starts following the provided hold target and disables gravity while held.
+    /// </summary>
+    /// <param name="target">Transform that defines the desired hold position and rotation.</param>
     public void BeginHold(Transform target)
     {
         _holdTarget = target;
@@ -60,6 +83,9 @@ public class HoldableObject : MonoBehaviour
         _isHeld = true;
     }
 
+    /// <summary>
+    /// Stops the hold follow behaviour and restores the object to free physics motion.
+    /// </summary>
     public void EndHold()
     {
         if (!_isHeld && _holdTarget == null) return;
@@ -71,11 +97,17 @@ public class HoldableObject : MonoBehaviour
         _rigidbody.angularVelocity = Vector3.zero;
     }
 
+    /// <summary>
+    /// Clears any residual angular velocity on the held rigidbody.
+    /// </summary>
     public void ClearAngularVelocity()
     {
         _rigidbody.angularVelocity = Vector3.zero;
     }
 
+    /// <summary>
+    /// Moves the held rigidbody toward the target position using a curved follow response.
+    /// </summary>
     private void UpdateHoldPosition()
     {
         Vector3 targetPosition = _holdTarget.position;
@@ -104,6 +136,9 @@ public class HoldableObject : MonoBehaviour
         _rigidbody.linearVelocity = Vector3.zero;
     }
 
+    /// <summary>
+    /// Rotates the held rigidbody toward the target rotation.
+    /// </summary>
     private void UpdateHoldRotation()
     {
         Quaternion targetRotation = _holdTarget.rotation;

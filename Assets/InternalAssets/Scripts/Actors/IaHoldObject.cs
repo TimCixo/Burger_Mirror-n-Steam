@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CollisionCache))]
+/// <summary>
+/// Finds holdable objects in front of the camera and manages the actor's active held item.
+/// </summary>
 public class IaHoldObject : MonoBehaviour
 {
     [Header("Input")]
@@ -16,8 +19,15 @@ public class IaHoldObject : MonoBehaviour
     private HoldableObject _heldObject;
     private CollisionCache _playerCollisionCache;
     private CollisionCache _heldCollisionCache;
+
+    /// <summary>
+    /// Gets the holdable object currently carried by the actor.
+    /// </summary>
     public HoldableObject HeldObject => _heldObject;
 
+    /// <summary>
+    /// Caches required references and disables the behaviour when setup is invalid.
+    /// </summary>
     private void Awake()
     {
         _playerCollisionCache = GetComponentInParent<CollisionCache>();
@@ -29,6 +39,10 @@ public class IaHoldObject : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Validates the configured input action, camera, hold point and collision dependencies.
+    /// </summary>
+    /// <returns><see langword="true"/> when the hold component is configured correctly.</returns>
     private bool Validate()
     {
         bool ok = true;
@@ -44,6 +58,9 @@ public class IaHoldObject : MonoBehaviour
         return ok;
     }
 
+    /// <summary>
+    /// Enables the hold action and subscribes to hold input callbacks.
+    /// </summary>
     private void OnEnable()
     {
         _holdAction?.action?.Enable();
@@ -51,6 +68,9 @@ public class IaHoldObject : MonoBehaviour
         _holdAction.action.canceled += OnHoldCanceled;
     }
 
+    /// <summary>
+    /// Unsubscribes from hold input callbacks and disables the action.
+    /// </summary>
     private void OnDisable()
     {
         _holdAction.action.performed -= OnHoldPerformed;
@@ -58,6 +78,9 @@ public class IaHoldObject : MonoBehaviour
         _holdAction?.action?.Disable();
     }
 
+    /// <summary>
+    /// Cleans stale held-object references and draws the debug pickup ray.
+    /// </summary>
     private void Update()
     {
         if (_heldObject != null && (!_heldObject.enabled || !_heldObject.IsHeld))
@@ -68,6 +91,10 @@ public class IaHoldObject : MonoBehaviour
         Debug.DrawRay(_camera.transform.position, _camera.transform.forward * _rayDistance, Color.red);
     }
 
+    /// <summary>
+    /// Attempts to pick up the nearest valid holdable when hold input is performed.
+    /// </summary>
+    /// <param name="context">Input callback context for the hold action.</param>
     private void OnHoldPerformed(InputAction.CallbackContext context)
     {
         if (TryFindHoldable(out HoldableObject holdable))
@@ -76,6 +103,11 @@ public class IaHoldObject : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Searches for the closest enabled holdable hit by the center-screen raycast.
+    /// </summary>
+    /// <param name="holdable">Resolved holdable object when one is found.</param>
+    /// <returns><see langword="true"/> when a valid holdable object is found.</returns>
     private bool TryFindHoldable(out HoldableObject holdable)
     {
         holdable = null;
@@ -98,6 +130,11 @@ public class IaHoldObject : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Walks up a transform hierarchy to find an enabled, currently unheld holdable component.
+    /// </summary>
+    /// <param name="current">Transform where the search should start.</param>
+    /// <returns>The first matching <see cref="HoldableObject"/> in the hierarchy, or <see langword="null"/>.</returns>
     private HoldableObject FindEnabledHoldable(Transform current)
     {
         while (current != null)
@@ -114,11 +151,19 @@ public class IaHoldObject : MonoBehaviour
         return null;
     }
 
+    /// <summary>
+    /// Drops the currently held object when the hold input is released.
+    /// </summary>
+    /// <param name="context">Input callback context for the hold action.</param>
     private void OnHoldCanceled(InputAction.CallbackContext context)
     {
         TryDrop();
     }
 
+    /// <summary>
+    /// Starts holding the provided object and ignores collisions between the actor and that object.
+    /// </summary>
+    /// <param name="holdable">Object to pick up.</param>
     public void PickUp(HoldableObject holdable)
     {
         if (_heldObject != null) TryDrop();
@@ -133,6 +178,10 @@ public class IaHoldObject : MonoBehaviour
         _heldObject.BeginHold(_holdPoint);
     }
 
+    /// <summary>
+    /// Stops holding the current object and restores actor-object collisions.
+    /// </summary>
+    /// <returns><see langword="true"/> when an object was dropped; otherwise <see langword="false"/>.</returns>
     public bool TryDrop()
     {
         if (_heldObject == null) return false;
@@ -142,6 +191,9 @@ public class IaHoldObject : MonoBehaviour
         return true;
     }
 
+    /// <summary>
+    /// Clears the held-object reference and re-enables actor collisions for it.
+    /// </summary>
     private void ReleaseHeldObjectReference()
     {
         CollisionUtility.SetIgnore(_playerCollisionCache.Colliders, _heldCollisionCache?.Colliders, false);

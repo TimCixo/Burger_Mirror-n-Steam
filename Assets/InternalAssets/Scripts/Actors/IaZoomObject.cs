@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Adjusts the hold point distance used by the hold system.
+/// </summary>
 public class IaZoomObject : MonoBehaviour
 {
     [Header("Input")]
@@ -12,6 +15,9 @@ public class IaZoomObject : MonoBehaviour
     [SerializeField] private float _minDistance = 0.75f;
     [SerializeField] private float _maxDistance = 3f;
 
+    /// <summary>
+    /// Disables the behaviour when the zoom setup is invalid.
+    /// </summary>
     private void Awake()
     {
         if (!Validate())
@@ -21,6 +27,10 @@ public class IaZoomObject : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Validates the zoom input action and hold point configuration.
+    /// </summary>
+    /// <returns><see langword="true"/> when the zoom component is configured correctly.</returns>
     private bool Validate()
     {
         bool ok = true;
@@ -35,16 +45,25 @@ public class IaZoomObject : MonoBehaviour
         return ok;
     }
 
+    /// <summary>
+    /// Enables the zoom input action when the component becomes active.
+    /// </summary>
     private void OnEnable()
     {
         _zoomAction?.action?.Enable();
     }
 
+    /// <summary>
+    /// Disables the zoom input action when the component becomes inactive.
+    /// </summary>
     private void OnDisable()
     {
         _zoomAction?.action?.Disable();
     }
 
+    /// <summary>
+    /// Moves the hold point along its local forward axis based on zoom input.
+    /// </summary>
     private void Update()
     {
         float zoomInput = _zoomAction.action.ReadValue<float>();
