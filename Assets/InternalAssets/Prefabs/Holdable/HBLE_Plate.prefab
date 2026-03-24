@@ -133,30 +133,17 @@ PrefabInstance:
       addedObject: {fileID: 667510604955410351}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3829788406683071681, guid: e326854d776b5ee4fb987b2e1174e819, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -2857124202402090801}
-    - targetCorrespondingSourceObject: {fileID: 3829788406683071681, guid: e326854d776b5ee4fb987b2e1174e819, type: 3}
-      insertIndex: -1
+      insertIndex: 2
       addedObject: {fileID: 5295720443180332066}
+    - targetCorrespondingSourceObject: {fileID: 3829788406683071681, guid: e326854d776b5ee4fb987b2e1174e819, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: -2857124202402090801}
   m_SourcePrefab: {fileID: 100100000, guid: e326854d776b5ee4fb987b2e1174e819, type: 3}
 --- !u!1 &2846203715443749318 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3829788406683071681, guid: e326854d776b5ee4fb987b2e1174e819, type: 3}
   m_PrefabInstance: {fileID: 1322258874172638471}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-2857124202402090801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2846203715443749318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d27a8950234cd364290387d10256525d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BurgerData
-  _stackableObjects: []
 --- !u!114 &5295720443180332066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,6 +157,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StackHolder
   _stackPoint: {fileID: 4412013585386187901}
+--- !u!114 &-2857124202402090801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2846203715443749318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d27a8950234cd364290387d10256525d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BurgerData
+  _stackableObjects: []
 --- !u!4 &6988142734926812730 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8260522807417443133, guid: e326854d776b5ee4fb987b2e1174e819, type: 3}
