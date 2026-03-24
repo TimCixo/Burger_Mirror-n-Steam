@@ -6,6 +6,7 @@
 - `TPL_` - template prefabs
 - `ENV_` - елементи середовища
 - `HBLE_` - holdable objects
+- `UI_` - UI prefabs
 - `PROP_` - scene props
 - `MAT_` - materials
 - `SCN_` - scenes
