@@ -8,9 +8,12 @@ using UnityEngine.InputSystem;
 public class IaMovement : MonoBehaviour
 {
     [Header("Input")]
+    [Tooltip("Input action that provides the 2D movement vector.")]
     [SerializeField] private InputActionReference _moveAction;
 
     [Header("Movement")]
+    [Min(0.01f)]
+    [Tooltip("Horizontal movement speed applied to the actor rigidbody.")]
     [SerializeField] private float _moveSpeed = 5f;
 
     private Rigidbody _rigidbody;

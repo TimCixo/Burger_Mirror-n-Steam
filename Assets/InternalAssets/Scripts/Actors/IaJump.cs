@@ -8,12 +8,16 @@ using UnityEngine.InputSystem;
 public class IaJump : MonoBehaviour
 {
     [Header("Input")]
+    [Tooltip("Input action used to queue a jump.")]
     [SerializeField] private InputActionReference _jumpAction;
 
     [Header("Jump")]
+    [Min(0.01f)]
+    [Tooltip("Impulse force applied upward when a jump is executed.")]
     [SerializeField] private float _jumpForce = 6f;
 
     [Header("Ground Check (Trigger)")]
+    [Tooltip("Layers that count as valid ground contacts for jumping.")]
     [SerializeField] private LayerMask _groundMask;
 
     private Rigidbody _rigidbody;

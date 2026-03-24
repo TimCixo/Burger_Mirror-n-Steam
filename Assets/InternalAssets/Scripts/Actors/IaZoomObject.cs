@@ -7,12 +7,20 @@ using UnityEngine.InputSystem;
 public class IaZoomObject : MonoBehaviour
 {
     [Header("Input")]
+    [Tooltip("Input action used to move the hold point closer or farther away.")]
     [SerializeField] private InputActionReference _zoomAction;
 
     [Header("Hold Point")]
+    [Tooltip("Transform moved along its local Z axis to change hold distance.")]
     [SerializeField] private Transform _holdPoint;
+    [Min(0.01f)]
+    [Tooltip("Speed at which the hold point moves when zoom input is applied.")]
     [SerializeField] private float _zoomSpeed = 2f;
+    [Min(0f)]
+    [Tooltip("Minimum local Z distance allowed for the hold point.")]
     [SerializeField] private float _minDistance = 0.75f;
+    [Min(0.01f)]
+    [Tooltip("Maximum local Z distance allowed for the hold point.")]
     [SerializeField] private float _maxDistance = 3f;
 
     /// <summary>

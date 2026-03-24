@@ -7,14 +7,20 @@ using UnityEngine.InputSystem;
 public class IaThrowObject : MonoBehaviour
 {
     [Header("Input")]
+    [Tooltip("Input action used to throw the currently held object.")]
     [SerializeField] private InputActionReference _throwAction;
 
     [Header("References")]
+    [Tooltip("Hold component that provides the currently held object.")]
     [SerializeField] private IaHoldObject _holdObject;
+    [Tooltip("Camera used to determine the throw direction.")]
     [SerializeField] private Camera _camera;
 
     [Header("Throw")]
+    [Min(0.01f)]
+    [Tooltip("Force magnitude applied when the held object is thrown.")]
     [SerializeField] private float _throwForce = 8f;
+    [Tooltip("Force mode used when applying the throw impulse.")]
     [SerializeField] private ForceMode _forceMode = ForceMode.Impulse;
 
     /// <summary>

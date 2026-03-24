@@ -8,12 +8,20 @@ using UnityEngine.InputSystem;
 public class IaHoldObject : MonoBehaviour
 {
     [Header("Input")]
+    [Tooltip("Input action used to pick up an object on press and drop it on release.")]
     [SerializeField] private InputActionReference _holdAction;
 
-    [Header("Hold")]
+    [Header("References")]
+    [Tooltip("Camera used to raycast from the screen center when searching for holdable objects.")]
     [SerializeField] private Camera _camera;
+    [Tooltip("Target transform that defines where the held object should follow.")]
     [SerializeField] private Transform _holdPoint;
+
+    [Header("Pickup")]
+    [Min(0.01f)]
+    [Tooltip("Maximum raycast distance for finding a holdable object in front of the player.")]
     [SerializeField] private float _rayDistance = 3f;
+    [Tooltip("Layers considered valid for holdable object pickup raycasts.")]
     [SerializeField] private LayerMask _holdableMask = ~0;
 
     private HoldableObject _heldObject;

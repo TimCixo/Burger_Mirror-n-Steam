@@ -7,9 +7,16 @@ using UnityEngine;
 public class HoldableObject : MonoBehaviour
 {
     [Header("Hold Follow")]
+    [Min(0.01f)]
+    [Tooltip("Base movement speed used while the object follows the hold target.")]
     [SerializeField] private float _followStrength = 12f;
+    [Tooltip("Curve that shapes follow speed based on current distance to the hold target.")]
     [SerializeField] private AnimationCurve _followCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+    [Min(0.01f)]
+    [Tooltip("Blend speed used to rotate the object toward the hold target rotation.")]
     [SerializeField] private float _rotationStrength = 12f;
+    [Min(0.01f)]
+    [Tooltip("Distance threshold after which the object snaps back to the hold target instead of smoothly following.")]
     [SerializeField] private float _snapDistance = 4f;
 
     private Rigidbody _rigidbody;

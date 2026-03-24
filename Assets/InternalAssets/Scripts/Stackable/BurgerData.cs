@@ -6,6 +6,7 @@ using UnityEngine;
 /// </summary>
 public class BurgerData : MonoBehaviour
 {
+    [Tooltip("Ordered list of stackable objects currently registered as part of the burger.")]
     [SerializeField] private List<StackableObject> _stackableObjects = new();
 
     /// <summary>

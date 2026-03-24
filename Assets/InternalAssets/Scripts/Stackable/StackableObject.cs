@@ -7,7 +7,9 @@ using UnityEngine;
 /// </summary>
 public class StackableObject : MonoBehaviour
 {
+    [Tooltip("Point exposed above this object and used as the next stack target.")]
     [SerializeField] private Transform _topPoint;
+    [Tooltip("Point used to align this object onto the current stack point.")]
     [SerializeField] private Transform _bottomPoint;
 
     private HoldableObject _holdableObject;

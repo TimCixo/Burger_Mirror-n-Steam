@@ -6,6 +6,7 @@ using UnityEngine;
 /// </summary>
 public class StackHolder : MonoBehaviour
 {
+    [Tooltip("Game object whose transform and trigger define the next stack insertion point.")]
     [SerializeField] private GameObject _stackPoint;
 
     private BurgerData _burgerData;

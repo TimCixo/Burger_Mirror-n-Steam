@@ -8,15 +8,23 @@ using UnityEngine.InputSystem;
 public class IaRotation : MonoBehaviour
 {
     [Header("Input")]
+    [Tooltip("Input action that provides yaw and pitch look input.")]
     [SerializeField] private InputActionReference _lookAction;
 
     [Header("Yaw")]
+    [Min(0.01f)]
+    [Tooltip("Yaw rotation speed for turning the actor body left and right.")]
     [SerializeField] private float _yawSpeed = 180f;
 
     [Header("Pitch")]
+    [Tooltip("Transform rotated locally to represent camera pitch.")]
     [SerializeField] private Transform _pitchPivot;
+    [Min(0.01f)]
+    [Tooltip("Pitch rotation speed for looking up and down.")]
     [SerializeField] private float _pitchSpeed = 120f;
+    [Tooltip("Minimum vertical look angle in degrees.")]
     [SerializeField] private float _minPitch = -80f;
+    [Tooltip("Maximum vertical look angle in degrees.")]
     [SerializeField] private float _maxPitch = 80f;
 
     private Rigidbody _rigidbody;
