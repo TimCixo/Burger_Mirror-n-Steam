@@ -63,12 +63,22 @@ public class HoldableStateController : MonoBehaviour
         CurrentState = state;
 
         RigidbodyState rigidbodyState = GetState(state);
+        bool makeKinematic = rigidbodyState.IsKinematic;
+
+        if (makeKinematic)
+        {
+            ClearVelocity();
+        }
+
         _rigidbody.isKinematic = rigidbodyState.IsKinematic;
         _rigidbody.useGravity = rigidbodyState.UseGravity;
         _rigidbody.interpolation = rigidbodyState.Interpolation;
         _rigidbody.collisionDetectionMode = rigidbodyState.CollisionDetectionMode;
-        _rigidbody.linearVelocity = Vector3.zero;
-        _rigidbody.angularVelocity = Vector3.zero;
+
+        if (!makeKinematic)
+        {
+            ClearVelocity();
+        }
 
         bool enableHoldable = state != HoldableState.Stacked;
         if (_holdableObject.enabled != enableHoldable)
@@ -103,6 +113,15 @@ public class HoldableStateController : MonoBehaviour
             default:
                 return _commonState;
         }
+    }
+
+    /// <summary>
+    /// Clears linear and angular velocity while the rigidbody is in a supported mode.
+    /// </summary>
+    private void ClearVelocity()
+    {
+        _rigidbody.linearVelocity = Vector3.zero;
+        _rigidbody.angularVelocity = Vector3.zero;
     }
 }
 
