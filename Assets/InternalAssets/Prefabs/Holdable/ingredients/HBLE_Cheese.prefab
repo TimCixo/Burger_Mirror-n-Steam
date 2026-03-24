@@ -125,7 +125,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1463580163735401648, guid: 7e889e73625005e4dad10e1a2d6aae72, type: 3}
       propertyPath: m_Name
-      value: TPL_Ingredient Variant
+      value: HBLE_Cheese
+      objectReference: {fileID: 0}
+    - target: {fileID: 3016677136965442128, guid: 7e889e73625005e4dad10e1a2d6aae72, type: 3}
+      propertyPath: _type
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6037866529794577228, guid: 7e889e73625005e4dad10e1a2d6aae72, type: 3}
       propertyPath: m_LocalPosition.x
