@@ -8,6 +8,7 @@
 
 - `WASD` або `Left Stick` - рух
 - `Mouse Delta` або `Right Stick` - поворот камери/персонажа
+- під час активного gameplay cursor прихований і зафіксований у центрі екрана для типового FPS look input
 - `Space` або `Gamepad South` - стрибок
 - `Left Mouse Button` або `Right Shoulder` - взяти / відпустити предмет
 - `Mouse Scroll` або `Triggers` - змінити дистанцію утримання предмета
@@ -18,7 +19,7 @@
 ### Рух персонажа
 
 - `IaMovement` задає горизонтальний рух персонажа через `Rigidbody.linearVelocity`
-- `IaRotation` відповідає за yaw тіла та pitch камери
+- `IaRotation` відповідає за yaw тіла та pitch камери, а також приховує і локає cursor у центрі екрана під час активної гри
 - `IaJump` виконує стрибок лише при наявності контакту з землею
 
 ### Взаємодія з предметами
