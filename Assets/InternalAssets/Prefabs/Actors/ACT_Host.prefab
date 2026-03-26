@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4806785400733553042}
   - component: {fileID: 8656517827358285631}
   - component: {fileID: 6633599779490172965}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Main Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 119
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -189,6 +189,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1760747419544794852, guid: 3be8c894d4c3c9741aa97f2312eb4a43, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3531614402943234623, guid: 3be8c894d4c3c9741aa97f2312eb4a43, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3773920547913055432, guid: 3be8c894d4c3c9741aa97f2312eb4a43, type: 3}
       propertyPath: _camera
       value: 
@@ -205,10 +213,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: ACT_Host
       objectReference: {fileID: 0}
+    - target: {fileID: 4971209331248797743, guid: 3be8c894d4c3c9741aa97f2312eb4a43, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5827636926576073773, guid: 3be8c894d4c3c9741aa97f2312eb4a43, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7123565037988187082, guid: 3be8c894d4c3c9741aa97f2312eb4a43, type: 3}
       propertyPath: _pitchPivot
       value: 
       objectReference: {fileID: 4314024431536779714}
+    - target: {fileID: 7616617451129492161, guid: 3be8c894d4c3c9741aa97f2312eb4a43, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7682337992928818835, guid: 3be8c894d4c3c9741aa97f2312eb4a43, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
