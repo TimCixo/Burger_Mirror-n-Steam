@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// Stores the ingredient type assigned to a stackable ingredient object.
 /// </summary>
-public class IngredientsData : MonoBehaviour
+public class IngredientData : MonoBehaviour
 {
     [SerializeField] private IngredientType _type = IngredientType.BottomBun;
 
@@ -15,7 +15,7 @@ public class IngredientsData : MonoBehaviour
 }
 
 /// <summary>
-/// Defines the supported ingredient types used by burger assembly.
+/// Defines the supported ingredient types used by recipe assembly.
 /// </summary>
 public enum IngredientType
 {

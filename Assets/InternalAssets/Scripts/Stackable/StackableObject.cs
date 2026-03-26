@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(HoldableStateController))]
 /// <summary>
-/// Marks a holdable object as stackable and exposes alignment points for burger assembly.
+/// Marks a holdable object as stackable and exposes alignment points for recipe assembly.
 /// </summary>
 public class StackableObject : MonoBehaviour
 {
@@ -79,11 +79,11 @@ public class StackableObject : MonoBehaviour
     }
 
     /// <summary>
-    /// Registers this object in the provided burger data container.
+    /// Registers this object in the provided recipe data container.
     /// </summary>
-    /// <param name="burgerData">Burger data that should contain this object.</param>
-    public void AddTo(BurgerData burgerData)
+    /// <param name="recipeData">Recipe data that should contain this object.</param>
+    public void AddTo(RecipeData recipeData)
     {
-        burgerData.Add(this);
+        recipeData.Add(this);
     }
 }

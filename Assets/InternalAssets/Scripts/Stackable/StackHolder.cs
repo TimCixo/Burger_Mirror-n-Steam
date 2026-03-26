@@ -1,15 +1,15 @@
 using UnityEngine;
 
-[RequireComponent(typeof(BurgerData))]
+[RequireComponent(typeof(RecipeData))]
 /// <summary>
-/// Accepts stackable objects through a trigger zone and builds a burger stack from them.
+/// Accepts stackable objects through a trigger zone and builds a recipe stack from them.
 /// </summary>
 public class StackHolder : MonoBehaviour
 {
     [Tooltip("Game object whose transform and trigger define the next stack insertion point.")]
     [SerializeField] private GameObject _stackPoint;
 
-    private BurgerData _burgerData;
+    private RecipeData _recipeData;
     private Collider _triggerCollider;
 
     /// <summary>
@@ -17,7 +17,7 @@ public class StackHolder : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        _burgerData = GetComponent<BurgerData>();
+        _recipeData = GetComponent<RecipeData>();
         _triggerCollider = _stackPoint.GetComponent<Collider>();
 
         if (!Validate())
@@ -35,7 +35,7 @@ public class StackHolder : MonoBehaviour
     {
         bool ok = true;
 
-        ok &= Guard.Expect(_burgerData != null, "BurgerData component is missing.", this);
+        ok &= Guard.Expect(_recipeData != null, "RecipeData component is missing.", this);
         ok &= Guard.Expect(_stackPoint != null, "Trigger object is not assigned.", this);
         ok &= Guard.Expect(_triggerCollider != null, "Trigger object must contain a Collider component.", this);
         ok &= Guard.Expect(_triggerCollider != null && _triggerCollider.isTrigger, "Trigger object collider must be a trigger.", this);
@@ -57,7 +57,7 @@ public class StackHolder : MonoBehaviour
 
         stackableObject.AttachTo(transform, _stackPoint.transform);
         MoveStackPoint(stackableObject.TopPoint.position);
-        stackableObject.AddTo(_burgerData);
+        stackableObject.AddTo(_recipeData);
     }
 
     /// <summary>

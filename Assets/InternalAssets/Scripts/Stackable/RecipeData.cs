@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Stores the ordered list of stackable objects that currently form a burger stack.
+/// Stores the ordered list of stackable objects that currently form a recipe stack.
 /// </summary>
-public class BurgerData : MonoBehaviour
+public class RecipeData : MonoBehaviour
 {
-    [Tooltip("Ordered list of stackable objects currently registered as part of the burger.")]
+    [Tooltip("Ordered list of stackable objects currently registered as part of the recipe.")]
     [SerializeField] private List<StackableObject> _stackableObjects = new();
 
     /// <summary>
@@ -15,7 +15,7 @@ public class BurgerData : MonoBehaviour
     public List<StackableObject> StackableObjects => _stackableObjects;
 
     /// <summary>
-    /// Adds a stackable object to the burger if it is not already present.
+    /// Adds a stackable object to the recipe if it is not already present.
     /// </summary>
     /// <param name="stackableObject">Object to add.</param>
     public void Add(StackableObject stackableObject)
@@ -26,7 +26,7 @@ public class BurgerData : MonoBehaviour
     }
 
     /// <summary>
-    /// Removes a stackable object from the burger.
+    /// Removes a stackable object from the recipe.
     /// </summary>
     /// <param name="stackableObject">Object to remove.</param>
     public void Remove(StackableObject stackableObject)
