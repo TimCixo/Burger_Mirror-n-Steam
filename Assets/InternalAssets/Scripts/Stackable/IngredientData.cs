@@ -1,9 +1,9 @@
 using UnityEngine;
 
-[RequireComponent(typeof(StackableObject))]
 /// <summary>
-/// Stores the ingredient type assigned to a stackable ingredient object.
+/// Stores the recipe ingredient type assigned to a stackable object.
 /// </summary>
+[RequireComponent(typeof(StackableObject))]
 public class IngredientData : MonoBehaviour
 {
     [SerializeField] private IngredientType _type = IngredientType.BottomBun;
@@ -11,6 +11,9 @@ public class IngredientData : MonoBehaviour
     /// <summary>
     /// Gets the configured ingredient type.
     /// </summary>
+    /// <value>
+    /// One of the supported ingredient types used during recipe assembly.
+    /// </value>
     public IngredientType Type => _type;
 }
 
@@ -19,8 +22,23 @@ public class IngredientData : MonoBehaviour
 /// </summary>
 public enum IngredientType
 {
+    /// <summary>
+    /// The bottom bun that starts the burger stack.
+    /// </summary>
     BottomBun,
+
+    /// <summary>
+    /// The meat patty placed between buns.
+    /// </summary>
     Patty,
+
+    /// <summary>
+    /// A cheese layer added to the burger stack.
+    /// </summary>
     Cheese,
+
+    /// <summary>
+    /// The top bun that finishes the burger stack.
+    /// </summary>
     TopBun
 }
