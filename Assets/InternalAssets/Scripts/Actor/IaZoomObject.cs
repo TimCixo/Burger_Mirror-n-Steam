@@ -43,12 +43,12 @@ public class IaZoomObject : MonoBehaviour
     {
         bool ok = true;
 
-        ok &= Guard.Expect(_zoomAction != null, "Zoom action reference is not assigned.", this);
-        ok &= Guard.Expect(_zoomAction.action != null, "Zoom action is not properly set up.", this);
-        ok &= Guard.Expect(_holdPoint != null, "Hold point transform is not assigned.", this);
-        ok &= Guard.Expect(_zoomSpeed > 0f, "Zoom speed must be greater than 0.", this);
-        ok &= Guard.Expect(_minDistance >= 0f, "Min distance must be greater than or equal to 0.", this);
-        ok &= Guard.Expect(_maxDistance > _minDistance, "Max distance must be greater than min distance.", this);
+        ok &= Guard.Expect(_zoomAction != null, "Zoom action reference is not assigned.", gameObject);
+        ok &= Guard.Expect(_zoomAction.action != null, "Zoom action is not properly set up.", gameObject);
+        ok &= Guard.Expect(_holdPoint != null, "Hold point transform is not assigned.", gameObject);
+        ok &= Guard.Expect(_zoomSpeed > 0f, "Zoom speed must be greater than 0.", gameObject);
+        ok &= Guard.Expect(_minDistance >= 0f, "Min distance must be greater than or equal to 0.", gameObject);
+        ok &= Guard.Expect(_maxDistance > _minDistance, "Max distance must be greater than min distance.", gameObject);
 
         return ok;
     }

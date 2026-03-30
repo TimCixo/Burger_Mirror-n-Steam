@@ -46,10 +46,10 @@ public class IaJump : MonoBehaviour
     {
         bool ok = true;
 
-        ok &= Guard.Expect(_jumpAction != null, "Jump action reference is not assigned.", this);
-        ok &= Guard.Expect(_jumpAction.action != null, "Jump action is not properly set up.", this);
-        ok &= Guard.Expect(_rigidbody != null, "Rigidbody component is missing.", this);
-        ok &= Guard.Expect(_groundMask.value != 0, "Ground mask is empty. Assign a ground layer.", this);
+        ok &= Guard.Expect(_jumpAction != null, "Jump action reference is not assigned.", gameObject);
+        ok &= Guard.Expect(_jumpAction.action != null, "Jump action is not properly set up.", gameObject);
+        ok &= Guard.Expect(_rigidbody != null, "Rigidbody component is missing.", gameObject);
+        ok &= Guard.Expect(_groundMask.value != 0, "Ground mask is empty. Assign a ground layer.", gameObject);
 
         return ok;
     }

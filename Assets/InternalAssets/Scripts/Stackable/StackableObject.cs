@@ -54,10 +54,10 @@ public class StackableObject : MonoBehaviour
     {
         bool ok = true;
 
-        ok &= Guard.Expect(_holdableObject != null, "HoldableObject component is missing.", this);
-        ok &= Guard.Expect(_stateController != null, "HoldableStateController component is missing.", this);
-        ok &= Guard.Expect(_topPoint != null, "Top point is not assigned.", this);
-        ok &= Guard.Expect(_bottomPoint != null, "Bottom point is not assigned.", this);
+        ok &= Guard.Expect(_holdableObject != null, "HoldableObject component is missing.", gameObject);
+        ok &= Guard.Expect(_stateController != null, "HoldableStateController component is missing.", gameObject);
+        ok &= Guard.Expect(_topPoint != null, "Top point is not assigned.", gameObject);
+        ok &= Guard.Expect(_bottomPoint != null, "Bottom point is not assigned.", gameObject);
 
         return ok;
     }

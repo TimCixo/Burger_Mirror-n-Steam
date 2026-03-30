@@ -55,13 +55,13 @@ public class IaHoldObject : MonoBehaviour
     {
         bool ok = true;
 
-        ok &= Guard.Expect(_holdAction != null, "Hold action reference is not assigned.", this);
-        ok &= Guard.Expect(_holdAction.action != null, "Hold action is not properly set up.", this);
-        ok &= Guard.Expect(_camera != null, "Camera is not assigned and Camera.main was not found.", this);
-        ok &= Guard.Expect(_holdPoint != null, "Hold point transform is not assigned.", this);
-        ok &= Guard.Expect(_playerCollisionCache != null, "Player collision cache is not assigned.", this);
-        ok &= Guard.Expect(_rayDistance > 0f, "Ray distance must be greater than 0.", this);
-        ok &= Guard.Expect(_holdableMask.value != 0, "Holdable mask is empty. Assign at least one layer.", this);
+        ok &= Guard.Expect(_holdAction != null, "Hold action reference is not assigned.", gameObject);
+        ok &= Guard.Expect(_holdAction.action != null, "Hold action is not properly set up.", gameObject);
+        ok &= Guard.Expect(_camera != null, "Camera is not assigned and Camera.main was not found.", gameObject);
+        ok &= Guard.Expect(_holdPoint != null, "Hold point transform is not assigned.", gameObject);
+        ok &= Guard.Expect(_playerCollisionCache != null, "Player collision cache is not assigned.", gameObject);
+        ok &= Guard.Expect(_rayDistance > 0f, "Ray distance must be greater than 0.", gameObject);
+        ok &= Guard.Expect(_holdableMask.value != 0, "Holdable mask is empty. Assign at least one layer.", gameObject);
 
         return ok;
     }

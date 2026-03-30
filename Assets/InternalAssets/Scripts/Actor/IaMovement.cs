@@ -41,9 +41,9 @@ public class IaMovement : MonoBehaviour
     {
         bool ok = true;
 
-        ok &= Guard.Expect(_moveAction != null, "Move action reference is not assigned.", this);
-        ok &= Guard.Expect(_moveAction.action != null, "Move action is not properly set up.", this);
-        ok &= Guard.Expect(_rigidbody != null, "Rigidbody component is missing.", this);
+        ok &= Guard.Expect(_moveAction != null, "Move action reference is not assigned.", gameObject);
+        ok &= Guard.Expect(_moveAction.action != null, "Move action is not properly set up.", gameObject);
+        ok &= Guard.Expect(_rigidbody != null, "Rigidbody component is missing.", gameObject);
 
         return ok;
     }

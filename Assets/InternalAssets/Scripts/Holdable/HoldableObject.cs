@@ -72,12 +72,12 @@ public class HoldableObject : MonoBehaviour
     {
         bool ok = true;
 
-        ok &= Guard.Expect(_rigidbody != null, "Rigidbody component is missing.", this);
-        ok &= Guard.Expect(_stateController != null, "HoldableStateController component is missing.", this);
-        ok &= Guard.Expect(_followStrength > 0f, "Follow strength must be greater than 0.", this);
-        ok &= Guard.Expect(_followCurve != null, "Follow curve is not assigned.", this);
-        ok &= Guard.Expect(_rotationStrength > 0f, "Rotation strength must be greater than 0.", this);
-        ok &= Guard.Expect(_snapDistance > 0f, "Snap distance must be greater than 0.", this);
+        ok &= Guard.Expect(_rigidbody != null, "Rigidbody component is missing.", gameObject);
+        ok &= Guard.Expect(_stateController != null, "HoldableStateController component is missing.", gameObject);
+        ok &= Guard.Expect(_followStrength > 0f, "Follow strength must be greater than 0.", gameObject);
+        ok &= Guard.Expect(_followCurve != null, "Follow curve is not assigned.", gameObject);
+        ok &= Guard.Expect(_rotationStrength > 0f, "Rotation strength must be greater than 0.", gameObject);
+        ok &= Guard.Expect(_snapDistance > 0f, "Snap distance must be greater than 0.", gameObject);
 
         return ok;
     }

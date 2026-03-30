@@ -35,10 +35,10 @@ public class StackHolder : MonoBehaviour
     {
         bool ok = true;
 
-        ok &= Guard.Expect(_recipeData != null, "RecipeData component is missing.", this);
-        ok &= Guard.Expect(_stackPoint != null, "Trigger object is not assigned.", this);
-        ok &= Guard.Expect(_triggerCollider != null, "Trigger object must contain a Collider component.", this);
-        ok &= Guard.Expect(_triggerCollider != null && _triggerCollider.isTrigger, "Trigger object collider must be a trigger.", this);
+        ok &= Guard.Expect(_recipeData != null, "RecipeData component is missing.", gameObject);
+        ok &= Guard.Expect(_stackPoint != null, "Trigger object is not assigned.", gameObject);
+        ok &= Guard.Expect(_triggerCollider != null, "Trigger object must contain a Collider component.", gameObject);
+        ok &= Guard.Expect(_triggerCollider != null && _triggerCollider.isTrigger, "Trigger object collider must be a trigger.", gameObject);
 
         return ok;
     }

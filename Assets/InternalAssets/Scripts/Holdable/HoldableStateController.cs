@@ -48,8 +48,8 @@ public class HoldableStateController : MonoBehaviour
     {
         bool ok = true;
 
-        ok &= Guard.Expect(_holdableObject != null, "HoldableObject component is missing.", this);
-        ok &= Guard.Expect(_rigidbody != null, "Rigidbody component is missing.", this);
+        ok &= Guard.Expect(_holdableObject != null, "HoldableObject component is missing.", gameObject);
+        ok &= Guard.Expect(_rigidbody != null, "Rigidbody component is missing.", gameObject);
 
         return ok;
     }

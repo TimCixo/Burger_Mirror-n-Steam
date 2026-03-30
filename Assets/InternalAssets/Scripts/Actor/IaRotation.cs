@@ -57,10 +57,10 @@ public class IaRotation : MonoBehaviour
     {
         bool ok = true;
 
-        ok &= Guard.Expect(_lookAction != null, "Look action reference is not assigned.", this);
-        ok &= Guard.Expect(_lookAction.action != null, "Look action is not properly set up.", this);
-        ok &= Guard.Expect(_rigidbody != null, "Rigidbody component is missing.", this);
-        ok &= Guard.Expect(_pitchPivot != null, "Pitch pivot is not assigned.", this);
+        ok &= Guard.Expect(_lookAction != null, "Look action reference is not assigned.", gameObject);
+        ok &= Guard.Expect(_lookAction.action != null, "Look action is not properly set up.", gameObject);
+        ok &= Guard.Expect(_rigidbody != null, "Rigidbody component is missing.", gameObject);
+        ok &= Guard.Expect(_pitchPivot != null, "Pitch pivot is not assigned.", gameObject);
 
         return ok;
     }

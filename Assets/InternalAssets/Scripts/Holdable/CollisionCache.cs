@@ -32,6 +32,6 @@ public class CollisionCache : MonoBehaviour
     /// <returns><see langword="true"/> when the cache contains colliders.</returns>
     private bool Validate()
     {
-        return Guard.Expect(_colliders != null && _colliders.Length > 0, "No colliders found.", this);
+        return Guard.Expect(_colliders != null && _colliders.Length > 0, "No colliders found.", gameObject);
     }
 }

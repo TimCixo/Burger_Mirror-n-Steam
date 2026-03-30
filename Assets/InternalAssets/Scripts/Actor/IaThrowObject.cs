@@ -45,11 +45,11 @@ public class IaThrowObject : MonoBehaviour
     {
         bool ok = true;
 
-        ok &= Guard.Expect(_throwAction != null, "Throw action reference is not assigned.", this);
-        ok &= Guard.Expect(_throwAction.action != null, "Throw action is not properly set up.", this);
-        ok &= Guard.Expect(_holdObject != null, "IaHoldObject reference is not assigned.", this);
-        ok &= Guard.Expect(_camera != null, "Camera is not assigned and Camera.main was not found.", this);
-        ok &= Guard.Expect(_throwForce > 0f, "Throw force must be greater than 0.", this);
+        ok &= Guard.Expect(_throwAction != null, "Throw action reference is not assigned.", gameObject);
+        ok &= Guard.Expect(_throwAction.action != null, "Throw action is not properly set up.", gameObject);
+        ok &= Guard.Expect(_holdObject != null, "IaHoldObject reference is not assigned.", gameObject);
+        ok &= Guard.Expect(_camera != null, "Camera is not assigned and Camera.main was not found.", gameObject);
+        ok &= Guard.Expect(_throwForce > 0f, "Throw force must be greater than 0.", gameObject);
 
         return ok;
     }
