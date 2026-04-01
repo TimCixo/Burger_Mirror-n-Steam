@@ -8,12 +8,15 @@ using UnityEngine;
 [Serializable]
 public sealed class CafeIngredientSystemDebugView
 {
+    [Header("Counters")]
     [Tooltip("Total count of ingredient objects tracked by the runtime ingredient system.")]
     [SerializeField] private int _ingredientCount;
     [Tooltip("Count of tracked ingredients that are currently active in the scene.")]
     [SerializeField] private int _activeIngredientCount;
     [Tooltip("Count of tracked ingredients currently parked in the inactive reuse pool.")]
     [SerializeField] private int _inactiveIngredientCount;
+
+    [Header("Ingredients")]
     [Tooltip("Debug snapshot of tracked ingredients with their type, active state and stack membership.")]
     [SerializeField] private List<string> _ingredients = new();
 
