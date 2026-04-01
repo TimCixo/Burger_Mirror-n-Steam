@@ -40,7 +40,15 @@
 
 - `StackableObject` описує елемент, який можна додати до стеку
 - `StackHolder` приймає нові об'єкти в trigger-зоні
-- `BurgerData` накопичує склад поточного бургера
+- `IngredientData` зберігає тип інгредієнта для конкретного stackable-об'єкта
+- `RecipeData` накопичує склад поточного стека інгредієнтів
+
+### Systems
+
+- `CafeSceneBootstrapper` створює runtime systems для café-сцени та оновлює їх debug snapshot-и
+- `CafeActorSystem` зберігає scene actor references
+- `CafeIngredientSystem` реєструє всі `IngredientData`, знайдені на сцені на старті гри, і керує їх повторним використанням через deactivate / reactivate flow
+- `CafeActorSystemDebugView` і `CafeIngredientSystemDebugView` зберігають serialized debug snapshot runtime-систем
 
 ## Поточні межі архітектури
 
@@ -51,5 +59,6 @@
 ## Scene Bootstrap
 
 - `CafeSceneBootstrapper` виступає composition root для café-сцени.
-- `CafeActorSystem` зараз є plain C# runtime class, який створюється в `Awake()`.
-- `CafeActorSystemDebugView` зберігає serialized debug snapshot, що оновлюється з bootstrapper-а під час play mode.
+- `CafeActorSystem` і `CafeIngredientSystem` є plain C# runtime classes, які створюються в `Awake()`.
+- На старті сцени bootstrapper збирає всі `IngredientData` через `FindObjectsByType(..., FindObjectsInactive.Include, ...)` і реєструє їх у `CafeIngredientSystem`.
+- `CafeActorSystemDebugView` і `CafeIngredientSystemDebugView` зберігають serialized debug snapshot, що оновлюється з bootstrapper-а під час play mode.

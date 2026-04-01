@@ -11,6 +11,8 @@ public class StackHolder : MonoBehaviour
 
     private RecipeData _recipeData;
     private Collider _triggerCollider;
+    private Vector3 _initialStackPointLocalPosition;
+    private Quaternion _initialStackPointLocalRotation;
 
     /// <summary>
     /// Caches required references and disables the behaviour when setup is invalid.
@@ -18,13 +20,16 @@ public class StackHolder : MonoBehaviour
     private void Awake()
     {
         _recipeData = GetComponent<RecipeData>();
-        _triggerCollider = _stackPoint.GetComponent<Collider>();
+        _triggerCollider = _stackPoint != null ? _stackPoint.GetComponent<Collider>() : null;
 
         if (!Validate())
         {
             enabled = false;
             return;
         }
+
+        _initialStackPointLocalPosition = _stackPoint.transform.localPosition;
+        _initialStackPointLocalRotation = _stackPoint.transform.localRotation;
     }
 
     /// <summary>
@@ -56,16 +61,53 @@ public class StackHolder : MonoBehaviour
         if (stackableObject.transform.IsChildOf(transform)) return;
 
         stackableObject.AttachTo(transform, _stackPoint.transform);
-        MoveStackPoint(stackableObject.TopPoint.position);
         stackableObject.AddTo(_recipeData);
+        RefreshStackPoint();
+    }
+
+    /// <summary>
+    /// Rebuilds the stack insertion point from the current top stack element or resets it when the stack is empty.
+    /// </summary>
+    public void RefreshStackPoint()
+    {
+        StackableObject topStackableObject = GetTopStackableObject();
+        if (topStackableObject == null)
+        {
+            ResetStackPoint();
+            return;
+        }
+
+        MoveStackPoint(topStackableObject.TopPoint.position, topStackableObject.TopPoint.rotation);
     }
 
     /// <summary>
     /// Moves the trigger stack point to the provided world-space position.
     /// </summary>
     /// <param name="position">Next position for the stack point.</param>
-    private void MoveStackPoint(Vector3 position)
+    /// <param name="rotation">Next rotation for the stack point.</param>
+    private void MoveStackPoint(Vector3 position, Quaternion rotation)
     {
         _stackPoint.transform.position = position;
+        _stackPoint.transform.rotation = rotation;
+    }
+
+    /// <summary>
+    /// Restores the stack insertion point to its initial local transform.
+    /// </summary>
+    private void ResetStackPoint()
+    {
+        Transform stackPointTransform = _stackPoint.transform;
+        stackPointTransform.localPosition = _initialStackPointLocalPosition;
+        stackPointTransform.localRotation = _initialStackPointLocalRotation;
+    }
+
+    /// <summary>
+    /// Returns the current top stackable object or <see langword="null"/> when the recipe stack is empty.
+    /// </summary>
+    private StackableObject GetTopStackableObject()
+    {
+        if (_recipeData.StackableObjects.Count == 0) return null;
+
+        return _recipeData.StackableObjects[_recipeData.StackableObjects.Count - 1];
     }
 }

@@ -79,6 +79,15 @@ public class StackableObject : MonoBehaviour
     }
 
     /// <summary>
+    /// Removes this object from its current stack hierarchy and restores the common holdable state.
+    /// </summary>
+    public void Detach()
+    {
+        transform.SetParent(null);
+        _stateController.ApplyState(HoldableState.Common);
+    }
+
+    /// <summary>
     /// Registers this object in the provided recipe data container.
     /// </summary>
     /// <param name="recipeData">Recipe data that should contain this object.</param>

@@ -12,8 +12,11 @@ public class CafeSceneBootstrapper : MonoBehaviour
     [Header("Debug")]
     [Tooltip("Serialized debug snapshot refreshed from the runtime cafe actor system during play mode.")]
     [SerializeField] private CafeActorSystemDebugView _actorSystemDebug = new();
+    [Tooltip("Serialized debug snapshot refreshed from the runtime cafe ingredient system during play mode.")]
+    [SerializeField] private CafeIngredientSystemDebugView _ingredientSystemDebug = new();
 
     private CafeActorSystem _actorSystem;
+    private CafeIngredientSystem _ingredientSystem;
 
     /// <summary>
     /// Validates serialized scene dependencies and creates runtime systems.
@@ -26,16 +29,18 @@ public class CafeSceneBootstrapper : MonoBehaviour
             return;
         }
 
-        _actorSystem = new CafeActorSystem(_player);
-        _actorSystemDebug.Bind(_actorSystem);
-    }
+        IngredientData[] ingredients = FindObjectsByType<IngredientData>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 
-    /// <summary>
-    /// Refreshes serialized debug data during play mode.
-    /// </summary>
-    private void Update()
-    {
-        _actorSystemDebug.Refresh();
+        _actorSystem = new CafeActorSystem(_player);
+        _ingredientSystem = new CafeIngredientSystem();
+
+        for (int i = 0; i < ingredients.Length; i++)
+        {
+            _ingredientSystem.Register(ingredients[i]);
+        }
+
+        _actorSystemDebug.Bind(_actorSystem);
+        _ingredientSystemDebug.Bind(_ingredientSystem);
     }
 
     /// <summary>
@@ -52,10 +57,20 @@ public class CafeSceneBootstrapper : MonoBehaviour
     }
 
     /// <summary>
+    /// Refreshes serialized debug data during play mode.
+    /// </summary>
+    private void Update()
+    {
+        _actorSystemDebug.Refresh();
+        _ingredientSystemDebug.Refresh();
+    }
+
+    /// <summary>
     /// Releases runtime bindings used by serialized debug views.
     /// </summary>
     private void OnDestroy()
     {
         _actorSystemDebug.Unbind();
+        _ingredientSystemDebug.Unbind();
     }
 }
