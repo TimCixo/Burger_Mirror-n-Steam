@@ -47,3 +47,9 @@
 - мережевий шар ще не введений у кодову базу
 - runtime bootstrap і scene flow поки прості та зосереджені на одній сцені
 - UI поки обмежений одним HUD prefab у сцені, а game state management ще не винесений в окремі модулі
+
+## Scene Bootstrap
+
+- `CafeSceneBootstrapper` виступає composition root для café-сцени.
+- `CafeActorSystem` зараз є plain C# runtime class, який створюється в `Awake()`.
+- `CafeActorSystemDebugView` зберігає serialized debug snapshot, що оновлюється з bootstrapper-а під час play mode.

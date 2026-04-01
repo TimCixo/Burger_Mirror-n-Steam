@@ -37,3 +37,8 @@
 - нові gameplay systems додавати окремими компонентами
 - зберігати однорідний стиль назв для prefab, material і script assets
 - уникати прихованих runtime dependency, якщо їх можна виразити через `RequireComponent`
+
+## Tooltip Requirement
+
+- Для serialized references та debug fields, де призначення поля не повністю очевидне з назви, `Tooltip` є обов'язковим.
+- Це правило стосується scene bootstrapper-ів, debug view, runtime service references та інших Inspector-полів, які описують wiring або debug role, а не очевидний gameplay parameter.

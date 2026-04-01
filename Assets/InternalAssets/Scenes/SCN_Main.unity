@@ -619,6 +619,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3890756415161706385, guid: 7c4d9f06a5764e14da6cb55b799950cc, type: 3}
   m_PrefabInstance: {fileID: 520811608}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &653892086
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 653892088}
+  - component: {fileID: 653892089}
+  m_Layer: 0
+  m_Name: Scene Core
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &653892088
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653892086}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &653892089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653892086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93c28755125045d4692e90106bac0036, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CafeSceneBootstrapper
+  _player: {fileID: 2013286505}
+  _actorSystemDebug:
+    _playerName: 
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1374,6 +1421,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0593c39eb1382b04384bd331d30f4239, type: 3}
+--- !u!1 &2013286505 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 494691029218613987, guid: feaa26d79c3d6df438ea375df6e6adef, type: 3}
+  m_PrefabInstance: {fileID: 247787694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!20 &2065859778 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 4806785400733553042, guid: feaa26d79c3d6df438ea375df6e6adef, type: 3}
@@ -1614,6 +1666,7 @@ SceneRoots:
   - {fileID: 1019009317}
   - {fileID: 410087041}
   - {fileID: 832575519}
+  - {fileID: 653892088}
   - {fileID: 138651282}
   - {fileID: 864312172}
   - {fileID: 837568191}
