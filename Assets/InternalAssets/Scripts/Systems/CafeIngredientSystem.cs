@@ -30,7 +30,7 @@ public sealed class CafeIngredientSystem
             for (int i = 0; i < _ingredients.Count; i++)
             {
                 IngredientData ingredient = _ingredients[i];
-                if (ingredient.gameObject.activeInHierarchy)
+                if (ingredient.gameObject.activeSelf)
                 {
                     count++;
                 }

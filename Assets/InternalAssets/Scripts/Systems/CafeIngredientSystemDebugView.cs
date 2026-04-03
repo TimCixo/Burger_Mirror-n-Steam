@@ -64,7 +64,7 @@ public sealed class CafeIngredientSystemDebugView
 
             bool isInStack = ingredient.GetComponentInParent<RecipeData>() != null;
             string stackState = isInStack ? "stacked" : "free";
-            string activeState = ingredient.gameObject.activeInHierarchy ? "active" : "inactive";
+            string activeState = ingredient.gameObject.activeSelf ? "active" : "inactive";
             _ingredients.Add($"{ingredient.name} [{ingredient.Type}] ({activeState}, {stackState})");
         }
     }
